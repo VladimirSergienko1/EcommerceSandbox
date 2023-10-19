@@ -1,10 +1,11 @@
 import React from 'react';
+import {Outlet, RouterProvider} from "react-router-dom";
+import routes from "./router/Router";
 
 const App = () => {
-    let a : number = 10;
     return (
-        <div>
-            App + {a}
+        <div className="p-1 text-2xl flex-col-reverse">
+            <RouterProvider router={routes} />
         </div>
     );
 };
