@@ -45,7 +45,11 @@ const routes = createBrowserRouter([
             {
                 path:'orders',
                 element: <OrdersPage/>
-            }
+            },
+         /*   {
+                path: "*",
+                element: <ErrorPage/>
+            },*/
         ]
     },
     {

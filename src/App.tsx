@@ -4,7 +4,7 @@ import routes from "./router/Router";
 
 const App = () => {
     return (
-        <div className="p-1 text-2xl flex-col-reverse">
+        <div>
             <RouterProvider router={routes} />
         </div>
     );
