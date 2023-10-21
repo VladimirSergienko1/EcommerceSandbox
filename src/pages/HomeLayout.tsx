@@ -1,14 +1,17 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
 const HomeLayout = () => {
     return (
-        <div >
-            <nav >
-                <span className='text-center text-primary text-4xl'>Hello</span>
-            </nav>
-            <Outlet/>
-        </div>
+        <>
+            <Header/>
+            <Navbar/>
+            <section className='layout py-20 text-4xl'>
+                <Outlet/>
+            </section>
+        </>
     );
 };
 
