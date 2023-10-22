@@ -1,13 +1,29 @@
 import { Link } from 'react-router-dom';
 
-import hero1 from '../assets/hero1.webp';
+// @ts-ignore
+import hero1 from "../assets/hero1.webp";
+// @ts-ignore
 import hero2 from '../assets/hero2.webp';
+// @ts-ignore
 import hero3 from '../assets/hero3.webp';
+// @ts-ignore
 import hero4 from '../assets/hero4.webp';
 
-const carouselImages = [hero1, hero2, hero3, hero4];
+
+import React, {useState} from 'react';
 
 const Hero = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const slides = [hero1, hero2, hero3, hero4];
+
+    const nextSlide = () => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+    };
+
     return (
         <div className='flex justify-between lg:flex gap-10 items-center'>
             <div className='lg:w-2/4'>
@@ -26,34 +42,15 @@ const Hero = () => {
                 </div>
             </div>
             <div className="hidden w-2/4 h-[28rem] lg:carousel carousel-center space-x-4 rounded-box ">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src={hero1} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" className="btn btn-circle">❮</a>
-                        <a href="#slide2" className="btn btn-circle">❯</a>
+                {slides.map((slide, index) => (
+                    <div key={index} className={`carousel-item relative w-full ${index !== currentSlide ? 'hidden' : ''}` }>
+                        <img src={slide} className="w-full" />
+                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                            <button onClick={prevSlide} className="btn btn-circle">❮</button>
+                            <button onClick={nextSlide} className="btn btn-circle">❯</button>
+                        </div>
                     </div>
-                </div>
-                <div id="slide2" className="carousel-item relative w-full">
-                    <img src={hero2} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle swap">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src={hero3} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" className="carousel-item relative w-full">
-                    <img src={hero4} className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     );

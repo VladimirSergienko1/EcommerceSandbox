@@ -48,6 +48,7 @@ const Navbar = () => {
 
     }, [theme]);
 
+
     return (
         <nav className='bg-base-200'>
             <div className='navbar layout'>
@@ -56,7 +57,7 @@ const Navbar = () => {
                         C
                     </NavLink>
                     <div className="dropdown">
-                        <label tabIndex={0} className='btn btn-ghost lg:hidden' onClick={toggleDropdown}>
+                        <label tabIndex={0} className='btn btn-ghost  lg:hidden' onClick={toggleDropdown}>
                             <FaBarsStaggered className='h-6 w-6'/>
                         </label>
                        <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-200 flex gap-y-2 rounded-box w-52 ${isOpen ? 'block' : 'hidden' }`}>

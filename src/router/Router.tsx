@@ -11,6 +11,9 @@ import CartPage from "../pages/CartPage";
 import AboutPage from "../pages/AboutPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import OrdersPage from "../pages/OrdersPage";
+import ErrorElement from "../components/ErrorElement";
+import {loader as landingLoader} from "../pages/LandingPage";
+import {loader as singleProductLoader} from "../pages/SingleProductPage"
 
 const routes = createBrowserRouter([
     {
@@ -20,7 +23,9 @@ const routes = createBrowserRouter([
         children:[
             {
                 index:true,
-                element: <LandingPage/>
+                element: <LandingPage/>,
+                errorElement: <ErrorElement/>,
+                loader: landingLoader
             },
             {
                 path:'products',
@@ -28,7 +33,9 @@ const routes = createBrowserRouter([
             },
             {
                 path:'products/:id',
-                element: <SingleProductPage/>
+                element: <SingleProductPage/>,
+                errorElement: <ErrorElement/>,
+                loader: singleProductLoader
             },
             {
                 path:'cart',
