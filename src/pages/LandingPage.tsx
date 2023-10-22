@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Hero from "../components/Hero";
 import {fetchUrl} from "../api/http";
+import ProductsPage from "./ProductsPage";
 import FeaturedProducts from "../components/FeaturedProducts";
 interface Product {
     attributes: {
@@ -22,12 +23,12 @@ interface Product {
 
 
 
-export const loader = async (): Promise<Product[]> => {
-    const response = await fetchUrl('/products?featured=true');
-    console.log(response.data.data);
-    return response.data.data;
-};
+export const loader = async () :Promise<Product> =>{
+    const response = await fetchUrl('/products?featured=true')
+    console.log(response.data.data) //backend adds another data array...
+    return response.data.data
 
+}
 
 const LandingPage = () => {
     const [products, setProducts] = useState<Product[]>([]);

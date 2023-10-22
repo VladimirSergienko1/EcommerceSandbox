@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SectionProps {
-    text: string
+    text:string
 }
 const SectionTitle:React.FC<SectionProps> = ({text}) => {
     return (

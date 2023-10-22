@@ -2,11 +2,7 @@ import React, {useState} from 'react';
 import {fetchUrl} from "../api/http";
 import {Link, useLoaderData} from "react-router-dom";
 
-interface LoaderParams {
-    params: {
-        id: string;
-    };
-}
+
 
 interface LoaderData {
     product: {
@@ -21,9 +17,11 @@ interface LoaderData {
     };
 }
 
-export const loader = async ({params}: LoaderParams)=>{
+// @ts-ignore
+export const loader = async ({params}) =>{
     const response = await fetchUrl(`/products/${params.id}`)
-    return {product:response.data.data}
+    return {product: response.data.data};
+
 }
 const SingleProductPage = () => {
     const formatPrice = (price: number) => {

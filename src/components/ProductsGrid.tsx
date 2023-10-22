@@ -13,13 +13,15 @@ interface Product {
     attributes: ProductAttributes;
 }
 const ProductsGrid = () => {
-    const products = useLoaderData() as Product[];
+    const products = useLoaderData();
+    console.log('Grid',products)
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
         }).format(Number((price / 100).toFixed(2)));
     };
+
     return (
         <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {products.map((product) => {
@@ -29,7 +31,7 @@ const ProductsGrid = () => {
                     <Link
                         key={product.id}
                         to={`/products/${product.id}`}
-                        className='card w-full shadow-xl hover:shadow-2xl transition duration-300'
+                        className='card bg-base-300 w-full shadow-xl hover:shadow-2xl transition duration-300'
                     >
                         <figure className='px-4 pt-4'>
                             <img
