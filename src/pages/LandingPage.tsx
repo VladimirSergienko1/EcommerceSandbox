@@ -26,7 +26,8 @@ interface Product {
 export const loader = async () :Promise<Product> =>{
     const response = await fetchUrl('/products?featured=true')
     console.log(response.data.data) //backend adds another data array...
-    return response.data.data
+    const products = response.data.data
+    return {products}
 
 }
 

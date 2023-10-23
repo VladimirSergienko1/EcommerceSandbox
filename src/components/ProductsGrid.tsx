@@ -13,7 +13,7 @@ interface Product {
     attributes: ProductAttributes;
 }
 const ProductsGrid = () => {
-    const products = useLoaderData();
+    const {products} = useLoaderData();
     console.log('Grid',products)
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('en-US', {

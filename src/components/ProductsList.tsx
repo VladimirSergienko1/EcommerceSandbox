@@ -14,7 +14,8 @@ interface Product {
     attributes: ProductAttributes;
 }
 const ProductsList = () => {
-    const products = useLoaderData() as Product[];
+    const {products} = useLoaderData() as Product[];
+    console.log('Products',products)
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',

@@ -10,7 +10,7 @@ export const loader = async ()=>{
     const products = response.data.data
     const meta = response.data.meta
 
-    return products
+    return {products, meta}
 
 }
 const ProductsPage = () => {
